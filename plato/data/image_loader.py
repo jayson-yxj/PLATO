@@ -57,3 +57,28 @@ class ImageLoader:
     def __getitem__(self, index:int) -> np.ndarray:
         '''通过索引获取图像'''
         return self.load_image(index)
+    
+    def load_batch(self, indices: List[int]) -> List[np.ndarray]:
+        """批量加载图像"""
+        return [self.load_image(i) for i in indices]
+    
+    def get_image_info(self, index: int) -> dict:
+        """获取图像信息（不加载图像）"""
+        if index < 0:
+            index = len(self) + index
+        
+        if index < 0 or index >= len(self):
+            raise IndexError(f"索引超出范围")
+        
+        img_path = self.image_paths[index]
+        return {
+            'index': index,
+            'path': str(img_path),
+            'name': img_path.name,
+            'exists': img_path.exists(),
+            'size_bytes': img_path.stat().st_size if img_path.exists() else 0
+        }
+    
+    def __repr__(self) -> str:
+        """字符串表示"""
+        return f"ImageLoader(dir='{self.data_dir}', images={len(self)})"
