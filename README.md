@@ -9,6 +9,8 @@
 ---
 
 ## 📖 项目简介
+![Uploading ed35ea9197de9dd05ee1cf608c81cde4.jpg…]()
+
 
 PLATO是一个现代化的3D重建系统，结合了**点特征**和**线特征**进行增量式Structure from Motion (SFM)。系统采用深度学习特征提取器（SuperPoint、SOLD2）和传统方法（LSD），实现高精度的相机位姿估计和3D场景重建。
 
